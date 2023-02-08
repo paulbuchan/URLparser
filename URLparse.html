@@ -1,0 +1,49 @@
+<html>
+  <head>
+  <style>
+    body, textarea, head, h1, h2 {
+        font-family: Helvetica, sans-serif;
+    }
+  </style>
+  
+  <script>
+      function parseInput() {
+        // Get the user input from the text box
+        var input = document.getElementById("input").value;
+  
+        // Split the input into separate lines
+        var lines = input.split("\n");
+  
+        // Initialize an array to store the URLs
+        var urls = [];
+  
+        // Iterate over each line
+        for (var i = 0; i < lines.length; i++) {
+          // Use a regular expression to match URLs
+          var match = lines[i].match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9]{1,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/);
+  
+          // If a URL was found, add it to the array of URLs
+          if (match) {
+            urls.push(match[0]);
+          }
+        }
+  
+        // Display the URLs on the page
+        var output = "";
+        for (var i = 0; i < urls.length; i++) {
+          output += "<p>" + urls[i] + "</p>";
+        }
+        document.getElementById("output").innerHTML = output;
+      }
+    </script>
+    <h1> URL Extractor</h1>
+  </head>
+  <body>
+    <h2>Enter your text below to extract the URLs</h2>
+    <textarea id="input" rows="30" cols="100" ></textarea>
+    <br><br>
+    <button onclick="parseInput()">Submit</button>
+    <br>
+    <div id="output"></div>
+  </body>
+</html>
