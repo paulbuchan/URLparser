@@ -31,7 +31,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 30%;
+  width: 25%;
 }
 
 .button-1:hover,
@@ -69,6 +69,9 @@
         }
         document.getElementById("output").innerHTML = output;
       }
+     function clearInput() {
+        document.getElementById("input").value = "";
+      }
     </script>
     <h1> URL Extractor</h1>
   </head>
@@ -77,6 +80,7 @@
     <textarea id="input" rows="30" style="width: 50%" ></textarea>
     <br><br>
     <button class="button-1" onclick="parseInput()">Submit</button>
+    <button class="button-1" onclick="clearInput()">Clear</button>
     <br>
     <div id="output"></div>
   </body>
